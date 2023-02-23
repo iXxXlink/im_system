@@ -79,10 +79,10 @@ public class TIMClient {
         //登录 + 获取可以使用的服务器 ip+port
         TIMServerResVO.ServerInfo timServer = userLogin();
 
-        //启动客户端
+        //启动客户端,并连接服务端
         startClient(timServer);
 
-        //向服务端注册
+        //向服务端注册（服务端保存ID与channel的映射）
         loginTIMServer();
     }
 

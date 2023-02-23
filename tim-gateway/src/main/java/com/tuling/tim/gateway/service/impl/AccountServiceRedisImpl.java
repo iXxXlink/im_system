@@ -40,6 +40,7 @@ import static com.tuling.tim.gateway.constant.Constant.ROUTE_PREFIX;
 public class AccountServiceRedisImpl implements AccountService {
     private final static Logger LOGGER = LoggerFactory.getLogger(AccountServiceRedisImpl.class);
 
+    //RedisTemplate只需在application.properties中增加配置信息，就可以直接使用RedisTemplate单例，进行redis数据的增删改查
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
@@ -96,6 +97,7 @@ public class AccountServiceRedisImpl implements AccountService {
         redisTemplate.opsForValue().set(key, msg);
     }
 
+    //返回redis中存储的所有用户id与服务器地址映射的Hashmap
     @Override
     public Map<Long, TIMServerResVO> loadRouteRelated() {
 
@@ -114,7 +116,6 @@ public class AccountServiceRedisImpl implements AccountService {
             String key = new String(next, StandardCharsets.UTF_8);
             LOGGER.info("key={}", key);
             parseServerInfo(routes, key);
-
         }
         try {
             scan.close();

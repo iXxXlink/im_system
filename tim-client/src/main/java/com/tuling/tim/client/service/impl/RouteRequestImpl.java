@@ -76,6 +76,7 @@ public class RouteRequestImpl implements RouteRequest {
             BaseResponse baseResponse = JSON.parseObject(json, BaseResponse.class);
 
             // account offline.
+            //还有离线机制？
             if (baseResponse.getCode().equals(StatusEnum.OFF_LINE.getCode())) {
                 LOGGER.error(p2PReqVO.getReceiveUserId() + ":" + StatusEnum.OFF_LINE.getMessage());
             }
@@ -87,10 +88,11 @@ public class RouteRequestImpl implements RouteRequest {
         }
     }
 
+    //从网关层获得netty服务器地址
     @Override
     public TIMServerResVO.ServerInfo getTIMServer(LoginReqVO loginReqVO) throws Exception {
 
-        //传入网关API、网关服务器url，通过动态代理创建实例
+        //rpc:传入网关API、网关服务器url，通过动态代理创建实例
         RouteApi routeApi = new ProxyManager<>(RouteApi.class, gatewayUrl, okHttpClient).getInstance();
 
         com.tuling.tim.gateway.api.vo.req.LoginReqVO vo = new com.tuling.tim.gateway.api.vo.req.LoginReqVO();

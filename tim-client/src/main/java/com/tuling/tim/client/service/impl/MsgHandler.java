@@ -42,15 +42,10 @@ public class MsgHandler implements MsgHandle {
     @Autowired
     private InnerCommandContext innerCommandContext;
 
-    private boolean aiModel = false;
 
     @Override
     public void sendMsg(String msg) {
-        if (aiModel) {
-            aiChat(msg);
-        } else {
-            normalChat(msg);
-        }
+        normalChat(msg);
     }
 
     /**
@@ -82,19 +77,7 @@ public class MsgHandler implements MsgHandle {
         }
     }
 
-    /**
-     * AI model
-     *
-     * @param msg
-     */
-    private void aiChat(String msg) {
-        msg = msg.replace("吗", "");
-        msg = msg.replace("嘛", "");
-        msg = msg.replace("?", "!");
-        msg = msg.replace("？", "!");
-        msg = msg.replace("你", "我");
-        System.out.println("AI:\033[31;4m" + msg + "\033[0m");
-    }
+
 
     @Override
     public void groupChat(GroupReqVO groupReqVO) throws Exception {
@@ -154,14 +137,6 @@ public class MsgHandler implements MsgHandle {
         System.exit(0);
     }
 
-    @Override
-    public void openAIModel() {
-        aiModel = true;
-    }
 
-    @Override
-    public void closeAIModel() {
-        aiModel = false;
-    }
 
 }

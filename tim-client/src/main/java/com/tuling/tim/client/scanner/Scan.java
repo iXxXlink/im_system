@@ -40,6 +40,7 @@ public class  Scan implements Runnable {
     public void run() {
         Scanner sc = new Scanner(System.in);
         while (true) {
+            //读取命令行数据
             String msg = sc.nextLine();
 
             //检查消息

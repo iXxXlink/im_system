@@ -33,6 +33,7 @@ public class IndexController implements ServerApi {
     @ResponseBody
     public BaseResponse<SendMsgResVO> sendMsg(@RequestBody SendMsgReqVO sendMsgReqVO) {
         BaseResponse<SendMsgResVO> res = new BaseResponse();
+        //将msg发送给指定客户端
         TIMServer.sendMsg(sendMsgReqVO);
 
         SendMsgResVO sendMsgResVO = new SendMsgResVO();

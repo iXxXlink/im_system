@@ -44,6 +44,7 @@ public final class ProxyManager<T> {
      * @return
      */
     public T getInstance() {
+        //动态代理的固定写法
         return (T) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{clazz}, new ProxyInvocation());
     }
 

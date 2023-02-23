@@ -19,7 +19,7 @@ public class InnerCommandContext {
 
     /**
      * 获取执行器实例
-     *
+     *  通过反射获得需要内部指令执行实例类
      * @param command 执行器实例
      * @return
      */

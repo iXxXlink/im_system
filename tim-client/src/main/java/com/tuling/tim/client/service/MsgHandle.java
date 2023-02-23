@@ -53,13 +53,4 @@ public interface MsgHandle {
      */
     void shutdown() ;
 
-    /**
-     * 开启 AI 模式
-     */
-    void openAIModel() ;
-
-    /**
-     * 关闭 AI 模式
-     */
-    void closeAIModel() ;
 }

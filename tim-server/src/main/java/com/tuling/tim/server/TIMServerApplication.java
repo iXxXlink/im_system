@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.net.InetAddress;
+import java.util.Map;
 
 /**
  *
@@ -30,7 +31,6 @@ public class TIMServerApplication implements CommandLineRunner {
         SpringApplication.run(TIMServerApplication.class, args);
         LOGGER.info("Start tim server success!!!");
     }
-
     @Override
     public void run(String... args) throws Exception {
         //获得本机IP

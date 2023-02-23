@@ -37,6 +37,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @since JDK 1.8
  */
+//controller是单例，但却是多线程，即不同请求使用的是不同线程进行处理
 @Controller
 @RequestMapping("/")
 public class RouteController implements RouteApi {
@@ -78,8 +79,8 @@ public class RouteController implements RouteApi {
         for (Map.Entry<Long, TIMServerResVO> timServerResVOEntry : serverResVOMap.entrySet()) {
             Long userId = timServerResVOEntry.getKey();
             TIMServerResVO TIMServerResVO = timServerResVOEntry.getValue();
+            //群聊过滤掉发送者自己
             if (userId.equals(groupReqVO.getUserId())) {
-                //过滤掉自己
                 TIMUserInfo timUserInfo = userInfoCacheService.loadUserInfoByUserId(groupReqVO.getUserId());
                 LOGGER.warn("过滤掉了发送者 userId={}", timUserInfo.toString());
                 continue;
